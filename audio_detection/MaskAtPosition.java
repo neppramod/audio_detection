@@ -26,7 +26,8 @@ public class MaskAtPosition {
 		final WaveHeader waveHeader = testClip.getWaveHeader();
 		
 		
-		int sampleRate = waveHeader.getSampleRate();
+		// int sampleRate = waveHeader.getSampleRate();
+		int sampleRate = 44100;
 		int bitsPerSample = waveHeader.getBitsPerSample();
 		int channels = waveHeader.getChannels();
 		
@@ -38,7 +39,8 @@ public class MaskAtPosition {
 		byte[] testClipData = testClip.getBytes();
 		byte[] maskedClipData = Arrays.copyOf(testClipData, testClipData.length);
 		byte[] blankPattern = new byte[(int)patternSampleSize];
-		System.arraycopy(blankPattern, 0, maskedClipData, (int)(startSamplePosition + patternSampleSize), blankPattern.length);
+		System.arraycopy(blankPattern, 0, maskedClipData, (int)(startSamplePosition), blankPattern.length);
+		System.arraycopy(blankPattern, 0, maskedClipData, (int)(startSamplePosition + blankPattern.length), blankPattern.length);
 		// InputStream is = new ByteArrayInputStream(maskedClipData);
 		
 		WaveHeader finalWaveHeader = testClip.getWaveHeader();
@@ -49,7 +51,5 @@ public class MaskAtPosition {
 		Wave finalWave = new Wave(finalWaveHeader, maskedClipData);
 		WaveFileManager waveFileManager = new WaveFileManager(finalWave);
 		waveFileManager.saveWaveAsFile("output_audio/cock_a_koel_muted.wav");
-		
-		
 	}
 }
