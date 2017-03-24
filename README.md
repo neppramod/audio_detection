@@ -9,3 +9,7 @@ Uses https://github.com/loisaidasam/musicg
 2. http://stackoverflow.com/questions/6979352/how-can-i-compare-2-audio-files-programmatically
 
 3. http://royvanrijn.com/blog/2010/06/creating-shazam-in-java/
+
+4. Wave File Format: https://sites.google.com/site/musicgapi/technical-documents/wav-file-format
+
+5. Save wave (Trimming): https://sites.google.com/site/musicgapi/User-guide-v1-4-x/wave-demo
