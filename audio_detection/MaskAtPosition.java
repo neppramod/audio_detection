@@ -1,9 +1,5 @@
 package com.musicg.experiment.testdetection;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 
 import com.musicg.fingerprint.FingerprintSimilarity;
@@ -34,7 +30,8 @@ public class MaskAtPosition {
 		int startSamplePosition = (int) (sampleRate * bitsPerSample / 8 * channels * clipTimePosition);
 		
 		final WaveHeader sampleHeader = pattern.getWaveHeader();
-		long patternSampleSize = sampleHeader.getSubChunk2Size();
+		// long patternSampleSize = sampleHeader.getSubChunk2Size();
+		long patternSampleSize = (sampleHeader.getChunkSize() + 44 ) * 2;  // * 2 = 16 bit
 		
 		byte[] testClipData = testClip.getBytes();
 		byte[] maskedClipData = Arrays.copyOf(testClipData, testClipData.length);
